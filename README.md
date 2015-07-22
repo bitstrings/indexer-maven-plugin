@@ -6,7 +6,7 @@ Creates an index file for selected directories.
 <plugin>
     <groupId>org.bitstrings.maven.plugins</groupId>
     <artifactId>indexer-maven-plugin</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <executions>
         <execution>
             <id>index-res</id>
