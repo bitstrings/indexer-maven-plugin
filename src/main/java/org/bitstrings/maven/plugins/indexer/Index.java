@@ -10,6 +10,7 @@ public class Index
     private Boolean recursive;
     private String fileIncludes;
     private String fileExcludes;
+    private String charset;
 
     public String getIndexFileName()
     {
@@ -69,5 +70,15 @@ public class Index
     public void setFileExcludes( String fileExcludes )
     {
         this.fileExcludes = fileExcludes;
+    }
+
+    public String getCharset()
+    {
+        return charset;
+    }
+
+    public void setCharset( String charset )
+    {
+        this.charset = charset;
     }
 }

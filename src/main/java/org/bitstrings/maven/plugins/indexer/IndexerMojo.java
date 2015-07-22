@@ -21,7 +21,8 @@ import static org.apache.maven.plugins.annotations.LifecyclePhase.*;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -65,7 +66,7 @@ public class IndexerMojo
     @Parameter
     private Index[] indexes;
 
-    @Parameter( defaultValue = "false" )
+    @Parameter( defaultValue = "true" )
     private boolean forceIndexing;
 
     @Parameter( defaultValue = "true" )
@@ -73,6 +74,9 @@ public class IndexerMojo
 
     @Parameter( defaultValue = "true" )
     private boolean addDefaultExcludes;
+
+    @Parameter( defaultValue = "UTF-8")
+    private String charset;
 
     @Override
     public void execute()
@@ -120,7 +124,10 @@ public class IndexerMojo
 
         final List<File> directories = Lists.newArrayList();
 
-        try ( BufferedWriter writer = new BufferedWriter( new FileWriter( indexFile ) ) )
+        // FIXME: charset
+        try (
+            BufferedWriter writer =
+                    new BufferedWriter( new OutputStreamWriter( new FileOutputStream( indexFile ), charset ) ) )
         {
             if ( !quiet )
             {
@@ -182,6 +189,11 @@ public class IndexerMojo
         if ( index.isForceIndexing() == null )
         {
             index.setForceIndexing( forceIndexing );
+        }
+
+        if ( index.getCharset() == null )
+        {
+            index.setCharset( charset );
         }
 
         if ( isNullOrEmpty( index.getFileIncludes() ) )
