@@ -1,5 +1,7 @@
 ## indexer-maven-plugin
 
+Creates an index file for selected directories.
+
 ```xml
 <plugin>
     <groupId>org.bitstrings.maven.plugins</groupId>
