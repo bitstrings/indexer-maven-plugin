@@ -136,7 +136,7 @@ public class IndexerMojo
 
             for ( File file : files )
             {
-                if ( file.equals( directory ) )
+                if ( file.equals( directory ) || file.getName().equals(indexFileName) )
                 {
                     continue;
                 }
