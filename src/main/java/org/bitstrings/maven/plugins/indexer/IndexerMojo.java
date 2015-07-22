@@ -96,6 +96,7 @@ public class IndexerMojo
 
             createIndexFile(
                 index.getIndexFileName(),
+                index.getCharset(),
                 index.getDirectory(),
                 includes, excludes,
                 index.isRecursive()
@@ -105,6 +106,7 @@ public class IndexerMojo
 
     private void createIndexFile(
                     String indexFileName,
+                    String charset,
                     File directory,
                     List<String> includes, List<String> excludes,
                     boolean recursive )
@@ -169,7 +171,7 @@ public class IndexerMojo
         {
             for ( File dir : directories )
             {
-                createIndexFile( indexFileName, dir, includes, excludes, recursive );
+                createIndexFile( indexFileName, charset, dir, includes, excludes, recursive );
             }
         }
     }
